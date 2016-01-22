@@ -23,19 +23,12 @@ namespace RedContactos.Service
             request.AddQueryParameter("username", model.Username);
             request.AddQueryParameter("password", model.Password);
 
-            try
-            {
+            
                 var response = await _client.Execute<UsuarioModel>(request);
                 if (response.IsSuccess)
                     return response.Data;
                 return null;
-            }
-            catch (Exception e)
-            {
-                //
-            }
-            return null;
-
+          
         }
 
         public async Task<bool> UsuarioNuevo(string login)
