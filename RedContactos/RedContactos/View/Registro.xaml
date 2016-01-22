@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RedContactos.View.Registro">
+  <StackLayout Padding="35" >
+
+    <Label Text="{Binding UsernameLabel}"></Label>
+    <Entry Text="{Binding Usuario.Username}"></Entry>
+    <Label Text="{Binding PasswordLabel}"></Label>
+    <Entry Text="{Binding Usuario.Password}"></Entry>
+    <Label Text="{Binding NombreLabel}"></Label>
+    <Entry Text="{Binding Usuario.Nombre}"></Entry>
+    <Label Text="{Binding ApellidosLabel}"></Label>
+    <Entry Text="{Binding Usuario.Apellidos}"></Entry>
+
+    <Button Text="Nuevo usuario" Command="{Binding cmdRegistro}"></Button>
+  </StackLayout>
+</ContentPage>

@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RedContactos.View.ListadoUsuarios">
+  <StackLayout Padding="20">
+    <Label Text="{Binding ListadoUsuariosLabel}" XAlign="Center"></Label>
+    <ListView ItemsSource="{Binding ListadoUsuarios}" >
+      <ListView.ItemTemplate >
+        <DataTemplate  >
+          <TextCell  Text="{Binding Username} " Detail="{Binding NombreCompleto}" />
+        </DataTemplate>
+      </ListView.ItemTemplate>
+    </ListView>
+  </StackLayout>
+</ContentPage>

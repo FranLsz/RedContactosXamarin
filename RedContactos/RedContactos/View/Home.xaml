@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RedContactos.View.Home">
+  <StackLayout Padding="35">
+    <Button Text="{Binding NuevoContactoLabel}" Command="{Binding cmdNuevoContacto}"></Button>
+    <Button Text="{Binding MisMensajesLabel}" Command="{Binding cmdMisMensajes}"></Button>
+
+    <StackLayout Padding="20">
+      <Label Text="{Binding MisContactosLabel}" XAlign="Center"></Label>
+      <ListView ItemsSource="{Binding ListadoContactos}" >
+        <ListView.ItemTemplate >
+          <DataTemplate  >
+            <TextCell  Text="{Binding Username} " Detail="{Binding NombreCompleto}" />
+          </DataTemplate>
+        </ListView.ItemTemplate>
+      </ListView>
+    </StackLayout>
+  </StackLayout>
+</ContentPage>
