@@ -11,22 +11,30 @@ namespace RedContactos.ViewModel
 {
     public class RegistroViewModel : GeneralViewModel
     {
+        // COMMANDS
         public ICommand cmdRegistro { get; set; }
 
+        // PROPERTIES
         public string UsernameLabel { get { return "Username"; } }
         public string PasswordLabel { get { return "Password"; } }
         public string NombreLabel { get { return "Nombre"; } }
         public string ApellidosLabel { get { return "Apellidos"; } }
 
+        private UsuarioModel _usuario;
         public UsuarioModel Usuario
         {
             get { return _usuario; }
             set { SetProperty(ref _usuario, value); }
         }
 
-        private UsuarioModel _usuario = new UsuarioModel();
+        // PAGE
+        public Page Page;
+
+        // CTOR
         public RegistroViewModel(INavigator navigator, IServicioDatos servicio) : base(navigator, servicio)
         {
+            Page = new Page();
+            Usuario = new UsuarioModel();
             cmdRegistro = new Command(GuardarUsuario);
         }
 
@@ -43,7 +51,7 @@ namespace RedContactos.ViewModel
                     /*var list = new List<UsuarioModel>();
                       list.Remove(list.FirstOrDefault(o => o.Id == us.Id));
                       Session.ViewBag = list;*/
-                    await _navigator.PushModalAsync<HomeViewModel>(o=>o.ListadoContactos = new List<UsuarioModel>());
+                    await _navigator.PushModalAsync<HomeViewModel>(o => o.ListadoContactos = new List<UsuarioModel>());
                 }
                 else
                 {

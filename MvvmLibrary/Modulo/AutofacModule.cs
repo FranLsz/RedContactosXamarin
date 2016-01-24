@@ -15,7 +15,9 @@ namespace MvvmLibrary.Modulo
             builder.RegisterType<Navigator>().
                 As<INavigator>().
                 SingleInstance();
-
+            builder.RegisterType<PageProxy>().
+               As<IPage>().
+               SingleInstance();
         }
     }
 }

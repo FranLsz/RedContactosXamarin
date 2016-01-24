@@ -23,18 +23,19 @@ namespace RedContactos.Service
             request.AddQueryParameter("username", model.Username);
             request.AddQueryParameter("password", model.Password);
 
-            
-                var response = await _client.Execute<UsuarioModel>(request);
-                if (response.IsSuccess)
-                    return response.Data;
-                return null;
-          
+            // la api devuelve error 404 si no existe, y restsharp peta
+            var response = await _client.Execute<UsuarioModel>(request);
+            if (response.IsSuccess)
+                return response.Data;
+
+            return null;
+
         }
 
-        public async Task<bool> UsuarioNuevo(string login)
+        public async Task<bool> CheckUsuario(string username)
         {
             var request = new RestRequest("Usuario") { Method = Method.GET };
-            request.AddQueryParameter("username", login);
+            request.AddQueryParameter("username", username);
 
             var response = await _client.Execute<bool>(request);
 
@@ -57,9 +58,14 @@ namespace RedContactos.Service
             return null;
         }
 
-        public Task<ICollection<UsuarioModel>> GetUsuarios()
+        public async Task<ICollection<UsuarioModel>> GetUsuarios()
         {
-            throw new System.NotImplementedException();
+            var request = new RestRequest("Usuario") { Method = Method.GET };
+
+            var response = await _client.Execute<ICollection<UsuarioModel>>(request);
+            if (response.IsSuccess)
+                return response.Data;
+            return null;
         }
 
         public Task<UsuarioModel> GetUsuario(string id)

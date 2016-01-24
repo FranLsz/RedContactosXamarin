@@ -37,8 +37,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Factorias\INavigator.cs" />
+    <Compile Include="Factorias\IPage.cs" />
     <Compile Include="Factorias\IViewFactory.cs" />
     <Compile Include="Factorias\Navigator.cs" />
+    <Compile Include="Factorias\PageProxy.cs" />
     <Compile Include="Factorias\ViewFactory.cs" />
     <Compile Include="Modulo\AutofacBootstrapper.cs" />
     <Compile Include="Modulo\AutofacModule.cs" />

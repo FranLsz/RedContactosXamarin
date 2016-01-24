@@ -5,29 +5,39 @@ using DataModel.ViewModel;
 using MvvmLibrary.Factorias;
 using RedContactos.Service;
 using RedContactos.Util;
+using RedContactos.View;
 using Xamarin.Forms;
 
 namespace RedContactos.ViewModel
 {
     public class LoginViewModel : GeneralViewModel
     {
+        // COMMANDS
         public ICommand cmdLogin { get; set; }
         public ICommand cmdRegistro { get; set; }
 
+        // PROPERTIES
         public string IniciarLabel { get { return "Iniciar sesión"; } }
         public string RegistroLabel { get { return "Registro"; } }
         public string TituloUsername { get { return "Nombre de usuario"; } }
         public string TituloPassword { get { return "Contraseña"; } }
 
-        private UsuarioModel _usuario = new UsuarioModel();
+        private UsuarioModel _usuario;
         public UsuarioModel Usuario
         {
             get { return _usuario; }
             set { SetProperty(ref _usuario, value); }
         }
 
+        // PAGE
+        public Page Page;
+
+        // CTOR
         public LoginViewModel(INavigator navigator, IServicioDatos servicio) : base(navigator, servicio)
         {
+            Page = new Page();
+            Usuario = new UsuarioModel();
+            Usuario = new UsuarioModel();
             cmdLogin = new Command(IniciarSesion);
             cmdRegistro = new Command(NuevoUsuario);
         }
@@ -40,6 +50,7 @@ namespace RedContactos.ViewModel
 
         private async void IniciarSesion()
         {
+
             try
             {
                 IsBusy = true;
@@ -47,17 +58,18 @@ namespace RedContactos.ViewModel
                 if (us != null)
                 {
                     Session.User = us;
-                    var list = new List<UsuarioModel>();
+                    var list = await _servicio.GetUsuarios();
+                    //var list = new List<UsuarioModel>();
                     await _navigator.PushAsync<HomeViewModel>(o => o.ListadoContactos = list);
                 }
                 else
                 {
-                    // Usuario no encontrado
+                    await Page.DisplayAlert("Imposible iniciar sesión", "El usuario o contraseña son incorrectos", "OK");
                 }
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
-                var ee = ex.Message;
+                await Page.DisplayAlert("Error", e.Message, "OK");
             }
             finally
             {

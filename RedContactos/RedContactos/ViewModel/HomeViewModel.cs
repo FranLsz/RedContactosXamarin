@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Input;
 using DataModel.ViewModel;
@@ -13,6 +14,8 @@ namespace RedContactos.ViewModel
     {
         public ICommand cmdNuevoContacto { get; set; }
         public ICommand cmdMisMensajes { get; set; }
+        public ICommand cmdHazAlgo { get; set; }
+
 
         public string NuevoContactoLabel { get { return "Nuevo contacto"; } }
         public string MisMensajesLabel { get { return "Mis mensajes"; } }
@@ -24,6 +27,14 @@ namespace RedContactos.ViewModel
         {
             cmdNuevoContacto = new Command(NuevoContacto);
             cmdMisMensajes = new Command(MisMensajes);
+            cmdHazAlgo = new Command(HazAlgo);
+            
+
+        }
+
+        private void HazAlgo(object obj)
+        {
+            var hemosllegado = obj;
         }
 
         private async void NuevoContacto()
