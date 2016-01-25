@@ -58,10 +58,15 @@ namespace RedContactos.ViewModel
                 var us = await _servicio.ValidarUsuario(_usuario);
                 if (us != null)
                 {
-                    Session.User= us;
+                    Session.User = us;
                     var list = await _servicio.GetUsuarios();
                     //var list = new List<UsuarioModel>();
-                    await _navigator.PushAsync<HomeViewModel>(o => o.ListadoContactos = new ObservableCollection<UsuarioModel>(list));
+                    await _navigator.PushAsync<HomeViewModel>(o =>
+                    {
+                        o.Titulo = "Home";
+                        o.ListadoContactos = new ObservableCollection<UsuarioModel>(list);
+                    }
+                    );
                 }
                 else
                 {

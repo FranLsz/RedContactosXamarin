@@ -17,5 +17,7 @@ namespace DataModel.ViewModel
         public string Nombre { get; set; }
         public string Apellidos { get; set; }
         public string Foto { get; set; }
+
+        public string NombreCompleto => Nombre + " " + Apellidos;
     }
 }
