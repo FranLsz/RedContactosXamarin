@@ -50,7 +50,7 @@ namespace RedContactos.ViewModel
             var list = await _servicio.GetUsuarios();
             list.Remove(list.FirstOrDefault(o => o.Id == Session.User.Id));
 
-            await _navigator.PushAsync<UsuariosViewModel>(o => o.ListadoUsuarios = list);
+            await _navigator.PushAsync<UsuariosViewModel>(o => o.ListadoUsuarios = new ObservableCollection<UsuarioModel>(list));
         }
 
         private void MisMensajes()

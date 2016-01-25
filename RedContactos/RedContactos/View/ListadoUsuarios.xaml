@@ -4,7 +4,7 @@
              x:Class="RedContactos.View.ListadoUsuarios">
   <StackLayout Padding="20">
     <Label Text="{Binding ListadoUsuariosLabel}" XAlign="Center"></Label>
-    <ListView ItemsSource="{Binding ListadoUsuarios}" >
+    <ListView ItemsSource="{Binding ListadoUsuarios, Mode=TwoWay}" SelectedItem="{Binding UsuarioSeleccionado, Mode=TwoWay}">
       <ListView.ItemTemplate >
         <DataTemplate  >
           <TextCell  Text="{Binding Username} " Detail="{Binding NombreCompleto}" />
