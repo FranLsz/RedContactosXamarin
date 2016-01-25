@@ -4,6 +4,7 @@ using DataModel.ViewModel;
 using MvvmLibrary.Factorias;
 using RedContactos.Service;
 using RedContactos.Util;
+using Xamarin.Forms;
 
 namespace RedContactos.ViewModel
 {
@@ -37,13 +38,14 @@ namespace RedContactos.ViewModel
 
             set
             {
-                SetProperty(ref _usuarioSeleccionado, value);
+                new Page().DisplayAlert("Item pulsado", value.NombreCompleto, "OK");
+                _usuarioSeleccionado = value;
             }
         }
 
         public UsuariosViewModel(INavigator navigator, IServicioDatos servicio, Session session) : base(navigator, servicio, session)
         {
-            UsuarioSeleccionado = new UsuarioModel();
+            //UsuarioSeleccionado = new UsuarioModel();
         }
     }
 }
