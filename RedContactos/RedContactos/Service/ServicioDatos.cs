@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 using System.Threading.Tasks;
 using DataModel.ViewModel;
 using RedContactos.Util;
@@ -70,9 +71,16 @@ namespace RedContactos.Service
             return null;
         }
 
-        public Task<UsuarioModel> GetUsuario(string id)
+        public async Task<UsuarioModel> GetUsuario(int id)
         {
-            throw new NotImplementedException();
+            var request = new RestRequest("Usuario") { Method = Method.GET };
+            request.AddQueryParameter("id", id);
+
+            var response = await _client.Execute<UsuarioModel>(request);
+            if (response.IsSuccess)
+                return response.Data;
+
+            return null;
         }
 
         #endregion
@@ -80,12 +88,24 @@ namespace RedContactos.Service
 
         #region Mensaje
 
-        public async Task<List<MensajeModel>> GetMensajes(int userId)
+        public async Task<List<MensajeModel>> GetMensajesRecibidos(int userId)
         {
             var request = new RestRequest("Mensaje") { Method = Method.GET };
-            request.AddQueryParameter("destino", userId);
+            request.AddQueryParameter("receptorId", userId);
 
             // la api devuelve error 404 si no existe, y restsharp peta
+            var response = await _client.Execute<List<MensajeModel>>(request);
+            if (response.IsSuccess)
+                return response.Data;
+
+            return null;
+        }
+
+        public async Task<List<MensajeModel>> GetMensajesEnviados(int userId)
+        {
+            var request = new RestRequest("Mensaje") { Method = Method.GET };
+            request.AddQueryParameter("emisorId", userId);
+
             var response = await _client.Execute<List<MensajeModel>>(request);
             if (response.IsSuccess)
                 return response.Data;
@@ -108,11 +128,10 @@ namespace RedContactos.Service
 
         public async Task<MensajeModel> AddMensaje(MensajeModel model)
         {
-            var request = new RestRequest("Mensaje")
-            {
-                Method = Method.POST
-            };
+            var request = new RestRequest("Mensaje", Method.POST);
             request.AddJsonBody(model);
+            //request.Parameters[0].ContentType = "application/json";
+            //request.Parameters[0].Encoding = Encoding.UTF8;
             var response = await _client.Execute<MensajeModel>(request);
 
             if (response.IsSuccess)

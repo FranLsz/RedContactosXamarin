@@ -7,7 +7,7 @@
     <Label Text="{Binding UsernameLabel}"></Label>
     <Entry Text="{Binding Usuario.Username}"></Entry>
     <Label Text="{Binding PasswordLabel}"></Label>
-    <Entry Text="{Binding Usuario.Password}"></Entry>
+    <Entry Text="{Binding Usuario.Password}" IsPassword="True"></Entry>
     <Label Text="{Binding NombreLabel}"></Label>
     <Entry Text="{Binding Usuario.Nombre}"></Entry>
     <Label Text="{Binding ApellidosLabel}"></Label>

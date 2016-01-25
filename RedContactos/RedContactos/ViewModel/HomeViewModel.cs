@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using DataModel.ViewModel;
 using MvvmLibrary.Factorias;
@@ -15,8 +16,6 @@ namespace RedContactos.ViewModel
     {
         public ICommand cmdNuevoContacto { get; set; }
         public ICommand cmdMisMensajes { get; set; }
-        public ICommand cmdHazAlgo { get; set; }
-
 
         public string NuevoContactoLabel { get { return "Nuevo contacto"; } }
         public string MisMensajesLabel { get { return "Mis mensajes"; } }
@@ -32,30 +31,55 @@ namespace RedContactos.ViewModel
             set { SetProperty(ref _listadoContactos, value); }
         }
 
+        public UsuarioModel ContactoSeleccionado
+        {
+            get { return _contactoSeleccionado; }
+            set
+            {
+                //_contactoSeleccionado = null;
+                if (value != null)
+                {
+                    _navigator.PushAsync<UsuarioDetalleViewModel>(vm =>
+                    {
+                        vm.Titulo = value.Username;
+                        vm.Usuario = value;
+                    });
+                }
+            }
+        }
+
+        public UsuarioModel _contactoSeleccionado;
 
         public HomeViewModel(INavigator navigator, IServicioDatos servicio, Session session) : base(navigator, servicio, session)
         {
             cmdNuevoContacto = new Command(NuevoContacto);
             cmdMisMensajes = new Command(MisMensajes);
-            cmdHazAlgo = new Command(HazAlgo);
         }
 
-        private void HazAlgo(object obj)
-        {
-            var hemosllegado = obj;
-        }
+
 
         private async void NuevoContacto()
         {
             var list = await _servicio.GetUsuarios();
             list.Remove(list.FirstOrDefault(o => o.Id == Session.User.Id));
 
-            await _navigator.PushAsync<UsuariosViewModel>(o => o.ListadoUsuarios = new ObservableCollection<UsuarioModel>(list));
+            await _navigator.PushAsync<UsuariosListadoViewModel>(o => o.ListadoUsuarios = new ObservableCollection<UsuarioModel>(list));
         }
 
-        private void MisMensajes()
+        private async void MisMensajes()
         {
-
+            var list = await _servicio.GetMensajesRecibidos(Session.User.Id);
+            foreach (var l in list)
+            {
+                l.Emisor = await _servicio.GetUsuario(l.IdOrigen);
+                l.Receptor = await _servicio.GetUsuario(l.IdDestino);
+            }
+            await _navigator.PushAsync<MensajesRecibidosViewModel>(
+                   o =>
+                   {
+                       o.Titulo = "Mensajes recibidos";
+                       o.Mensajes = new ObservableCollection<MensajeModel>(list);
+                   });
         }
     }
 }

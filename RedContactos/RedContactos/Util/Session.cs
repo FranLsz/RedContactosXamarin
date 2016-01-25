@@ -6,11 +6,15 @@ namespace RedContactos.Util
 {
     public class Session
     {
-        public  UsuarioModel User { get; set; }
+        public UsuarioModel User
+        {
+            get { return (UsuarioModel)_session["User"]; }
+            set { _session["User"] = value; }
+        }
 
         private Dictionary<string, object> _session = new Dictionary<string, object>();
 
-        public Object this[string index]
+        public object this[string index]
         {
             get { return _session[index]; }
             set { _session[index] = value; }

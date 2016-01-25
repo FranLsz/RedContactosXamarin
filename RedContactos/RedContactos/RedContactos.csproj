@@ -47,8 +47,13 @@
     <Compile Include="ViewModel\GeneralViewModel.cs" />
     <Compile Include="ViewModel\HomeViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
+    <Compile Include="ViewModel\MensajeDetalleViewModel.cs" />
+    <Compile Include="ViewModel\MensajeNuevoViewModel.cs" />
+    <Compile Include="ViewModel\MensajesEnviadosViewModel.cs" />
+    <Compile Include="ViewModel\MensajesRecibidosViewModel.cs" />
     <Compile Include="ViewModel\RegistroViewModel.cs" />
-    <Compile Include="ViewModel\UsuariosViewModel.cs" />
+    <Compile Include="ViewModel\UsuarioDetalleViewModel.cs" />
+    <Compile Include="ViewModel\UsuariosListadoViewModel.cs" />
     <Compile Include="View\DetalleUsuario.xaml.cs">
       <DependentUpon>DetalleUsuario.xaml</DependentUpon>
     </Compile>
@@ -61,8 +66,23 @@
     <Compile Include="View\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\MensajeDetalle.xaml.cs">
+      <DependentUpon>MensajeDetalle.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MensajeNuevo.xaml.cs">
+      <DependentUpon>MensajeNuevo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MensajesEnviados.xaml.cs">
+      <DependentUpon>MensajesEnviados.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MensajesRecibidos.xaml.cs">
+      <DependentUpon>MensajesRecibidos.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Registro.xaml.cs">
       <DependentUpon>Registro.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UsuarioDetalle.xaml.cs">
+      <DependentUpon>UsuarioDetalle.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -143,6 +163,36 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="View\DetalleUsuario.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="View\MensajesRecibidos.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="View\MensajeDetalle.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="View\UsuarioDetalle.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="View\MensajeNuevo.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="View\MensajesEnviados.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

@@ -6,7 +6,7 @@
   <StackLayout Padding="35">
 
     <Entry Text="{Binding Usuario.Username}" Placeholder="{Binding TituloUsername}"></Entry>
-    <Entry Text="{Binding Usuario.Password}" Placeholder="{Binding TituloPassword}"></Entry>
+    <Entry Text="{Binding Usuario.Password}" Placeholder="{Binding TituloPassword}" IsPassword="True"></Entry>
 
     <StackLayout Orientation="Vertical">
       <Button Text="{Binding IniciarLabel}" Command="{Binding cmdLogin}"></Button>

@@ -29,7 +29,12 @@ namespace RedSocial.Modulo
             viewFactory.Register<LoginViewModel, Login>();
             viewFactory.Register<RegistroViewModel, Registro>();
             viewFactory.Register<HomeViewModel, Home>();
-            viewFactory.Register<UsuariosViewModel, ListadoUsuarios>();
+            viewFactory.Register<UsuariosListadoViewModel, ListadoUsuarios>();
+            viewFactory.Register<UsuarioDetalleViewModel, UsuarioDetalle>();
+            viewFactory.Register<MensajesRecibidosViewModel, MensajesRecibidos>();
+            viewFactory.Register<MensajesEnviadosViewModel, MensajesEnviados>();
+            viewFactory.Register<MensajeNuevoViewModel, MensajeNuevo>();
+            viewFactory.Register<MensajeDetalleViewModel, MensajeDetalle>();
         }
 
         protected override void ConfigureApplication(IContainer container)

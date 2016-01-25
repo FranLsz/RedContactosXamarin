@@ -9,7 +9,7 @@
 
     <StackLayout Padding="20">
       <Label Text="{Binding MisContactosLabel}" XAlign="Center"></Label>
-      <ListView ItemsSource="{Binding ListadoContactos}" >
+      <ListView ItemsSource="{Binding ListadoContactos}" SelectedItem="{Binding ContactoSeleccionado}">
         <ListView.ItemTemplate >
           <DataTemplate  >
             <TextCell  Text="{Binding Username} " Detail="{Binding NombreCompleto}" />

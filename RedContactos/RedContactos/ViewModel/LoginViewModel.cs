@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows.Input;
 using DataModel.ViewModel;
 using MvvmLibrary.Factorias;
@@ -60,10 +61,10 @@ namespace RedContactos.ViewModel
                 {
                     Session.User = us;
                     var list = await _servicio.GetUsuarios();
-                    //var list = new List<UsuarioModel>();
+                    list.Remove(list.FirstOrDefault(o => o.Id == Session.User.Id));
                     await _navigator.PushAsync<HomeViewModel>(o =>
                     {
-                        o.Titulo = "Home";
+                        o.Titulo = "Bienvenido " + Session.User.Username;
                         o.ListadoContactos = new ObservableCollection<UsuarioModel>(list);
                     }
                     );

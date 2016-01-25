@@ -8,7 +8,7 @@ using Xamarin.Forms;
 
 namespace RedContactos.ViewModel
 {
-    public class UsuariosViewModel : GeneralViewModel
+    public class UsuariosListadoViewModel : GeneralViewModel
     {
 
         public string ListadoUsuariosLabel { get { return "Usuarios disponibles"; } }
@@ -38,12 +38,12 @@ namespace RedContactos.ViewModel
 
             set
             {
-                new Page().DisplayAlert("Item pulsado", value.NombreCompleto, "OK");
+                new Page().DisplayAlert("Agregar contacto...", value.NombreCompleto, "OK");
                 _usuarioSeleccionado = value;
             }
         }
 
-        public UsuariosViewModel(INavigator navigator, IServicioDatos servicio, Session session) : base(navigator, servicio, session)
+        public UsuariosListadoViewModel(INavigator navigator, IServicioDatos servicio, Session session) : base(navigator, servicio, session)
         {
             //UsuarioSeleccionado = new UsuarioModel();
         }

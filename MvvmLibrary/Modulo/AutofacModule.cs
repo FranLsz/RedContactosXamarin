@@ -13,11 +13,11 @@ namespace MvvmLibrary.Modulo
                  As<IViewFactory>().
                  SingleInstance();
             builder.RegisterType<Navigator>().
-                As<INavigator>().
-                SingleInstance();
+                 As<INavigator>().
+                 SingleInstance();
             builder.RegisterType<PageProxy>().
-               As<IPage>().
-               SingleInstance();
+                 As<IPage>().
+                 SingleInstance();
         }
     }
 }

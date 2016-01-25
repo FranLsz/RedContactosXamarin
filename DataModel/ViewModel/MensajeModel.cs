@@ -18,5 +18,8 @@ namespace DataModel.ViewModel
         public string Contenido { get; set; }
         public bool Leido { get; set; }
         public System.DateTime Fecha { get; set; }
+
+        public UsuarioModel Emisor { get; set; }
+        public UsuarioModel Receptor { get; set; }
     }
 }

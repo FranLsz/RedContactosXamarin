@@ -16,26 +16,37 @@ namespace RedContactos.Modulo
             builder.Register<INavigation>(ctx => App.Current.MainPage.Navigation).SingleInstance();
             builder.RegisterType<Session>().SingleInstance();
 
+            // PAGES
             builder.RegisterType<Login>();
             builder.RegisterType<Registro>();
             builder.RegisterType<Home>();
             builder.RegisterType<ListadoUsuarios>();
+            builder.RegisterType<MensajesRecibidos>();
+            builder.RegisterType<MensajeDetalle>();
+            builder.RegisterType<UsuarioDetalle>();
+            builder.RegisterType<MensajeNuevo>();
+            builder.RegisterType<MensajesEnviados>();
+
+            // VIEWMODELS
             builder.RegisterType<LoginViewModel>();
             builder.RegisterType<RegistroViewModel>();
             builder.RegisterType<HomeViewModel>();
-            builder.RegisterType<UsuariosViewModel>();
+            builder.RegisterType<UsuariosListadoViewModel>();
+            builder.RegisterType<UsuarioDetalleViewModel>();
+            builder.RegisterType<MensajesRecibidosViewModel>();
+            builder.RegisterType<MensajeDetalleViewModel>();
+            builder.RegisterType<MensajeNuevoViewModel>();
+            builder.RegisterType<MensajesEnviadosViewModel>();
+
 
             // action es un delegado, es un objeto que se le pasa para operar sobre otro objeto
             // func es una funcion
-
-
             /*se registra la pagina
             Constuimos un objeto de forma manual
             decimos la instancia de que queremos registrar
             registirstramos una instancia en concreto, en vez de un tipo
             hacemos esto para saber que pagina se esta ejecutando
                 
-
             */
             builder.RegisterInstance<Func<Page>>(() =>
             {
