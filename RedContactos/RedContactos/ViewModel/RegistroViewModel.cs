@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Input;
 using DataModel.ViewModel;
@@ -51,7 +52,7 @@ namespace RedContactos.ViewModel
                     /*var list = new List<UsuarioModel>();
                       list.Remove(list.FirstOrDefault(o => o.Id == us.Id));
                       Session.ViewBag = list;*/
-                    await _navigator.PushModalAsync<HomeViewModel>(o => o.ListadoContactos = new List<UsuarioModel>());
+                    await _navigator.PushModalAsync<HomeViewModel>(o => o.ListadoContactos = new ObservableCollection<UsuarioModel>());
                 }
                 else
                 {
