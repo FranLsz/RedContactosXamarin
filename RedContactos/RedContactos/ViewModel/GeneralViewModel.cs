@@ -1,6 +1,7 @@
 ﻿using MvvmLibrary.Factorias;
 using MvvmLibrary.ViewModel.Base;
 using RedContactos.Service;
+using RedContactos.Util;
 
 namespace RedContactos.ViewModel
 {
@@ -8,11 +9,13 @@ namespace RedContactos.ViewModel
     {
         protected INavigator _navigator;
         protected IServicioDatos _servicio;
+        protected Session Session;
 
-        public GeneralViewModel(INavigator navigator, IServicioDatos servicio)
+        public GeneralViewModel(INavigator navigator, IServicioDatos servicio, Session session)
         {
             _navigator = navigator;
             _servicio = servicio;
+            Session = session;
         }
     }
 }

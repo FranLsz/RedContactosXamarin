@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Input;
 using DataModel.ViewModel;
@@ -21,15 +22,22 @@ namespace RedContactos.ViewModel
         public string MisMensajesLabel { get { return "Mis mensajes"; } }
         public string MisContactosLabel { get { return "Mis contactos"; } }
 
-        public ICollection<UsuarioModel> ListadoContactos { get; set; }
+        private ObservableCollection<UsuarioModel> _listadoContactos;
+        public ObservableCollection<UsuarioModel> ListadoContactos
+        {
+            get
+            {
+                return _listadoContactos;
+            }
+            set { SetProperty(ref _listadoContactos, value); }
+        }
 
-        public HomeViewModel(INavigator navigator, IServicioDatos servicio) : base(navigator, servicio)
+
+        public HomeViewModel(INavigator navigator, IServicioDatos servicio, Session session) : base(navigator, servicio, session)
         {
             cmdNuevoContacto = new Command(NuevoContacto);
             cmdMisMensajes = new Command(MisMensajes);
             cmdHazAlgo = new Command(HazAlgo);
-            
-
         }
 
         private void HazAlgo(object obj)

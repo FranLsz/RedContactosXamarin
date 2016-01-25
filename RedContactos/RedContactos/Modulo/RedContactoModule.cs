@@ -1,6 +1,7 @@
 ﻿using System;
 using Autofac;
 using RedContactos.Service;
+using RedContactos.Util;
 using RedContactos.View;
 using RedContactos.ViewModel;
 using Xamarin.Forms;
@@ -11,10 +12,9 @@ namespace RedContactos.Modulo
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterType<ServicioDatos>().
-                As<IServicioDatos>().
-                SingleInstance();
+            builder.RegisterType<ServicioDatos>().As<IServicioDatos>().SingleInstance();
             builder.Register<INavigation>(ctx => App.Current.MainPage.Navigation).SingleInstance();
+            builder.RegisterType<Session>().SingleInstance();
 
             builder.RegisterType<Login>();
             builder.RegisterType<Registro>();

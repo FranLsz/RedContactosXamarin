@@ -33,7 +33,7 @@ namespace RedContactos.ViewModel
         public Page Page;
 
         // CTOR
-        public LoginViewModel(INavigator navigator, IServicioDatos servicio) : base(navigator, servicio)
+        public LoginViewModel(INavigator navigator, IServicioDatos servicio, Session session) : base(navigator, servicio, session)
         {
             Page = new Page();
             Usuario = new UsuarioModel();
@@ -57,7 +57,7 @@ namespace RedContactos.ViewModel
                 var us = await _servicio.ValidarUsuario(_usuario);
                 if (us != null)
                 {
-                    Session.User = us;
+                    Session.User= us;
                     var list = await _servicio.GetUsuarios();
                     //var list = new List<UsuarioModel>();
                     await _navigator.PushAsync<HomeViewModel>(o => o.ListadoContactos = list);
