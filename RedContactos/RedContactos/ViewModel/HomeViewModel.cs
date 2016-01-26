@@ -36,15 +36,13 @@ namespace RedContactos.ViewModel
             get { return _contactoSeleccionado; }
             set
             {
-                //_contactoSeleccionado = null;
-                if (value != null)
+                _navigator.PushAsync<UsuarioDetalleViewModel>(vm =>
                 {
-                    _navigator.PushAsync<UsuarioDetalleViewModel>(vm =>
-                    {
-                        vm.Titulo = value.Username;
-                        vm.Usuario = value;
-                    });
-                }
+                    vm.Titulo = value.Username;
+                    vm.Usuario = value;
+                });
+                _contactoSeleccionado = null;
+                SetProperty(ref value, null);
             }
         }
 

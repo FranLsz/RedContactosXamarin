@@ -28,19 +28,15 @@ namespace RedContactos.ViewModel
             get { return _mensajeSeleccionado; }
             set
             {
-                if (value != null)
-                {
-                    _mensajeSeleccionado = value;
                     _navigator.PushAsync<MensajeDetalleViewModel>(vm =>
                     {
                         var msj = value;
                         vm.Titulo = "Mensaje recibido nº " + value.Id;
-                        
+
                         vm.Mensaje = msj;
                     });
-
-                }
-
+                    _mensajeSeleccionado = null;
+                    SetProperty(ref value, null);
             }
         }
 

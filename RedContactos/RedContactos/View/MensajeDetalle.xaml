@@ -3,16 +3,20 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="RedContactos.View.MensajeDetalle"
              Title="{Binding Titulo}">
-  <StackLayout Padding="10">
-    <Label Text="{Binding Mensaje.Asunto}" FontSize="50"></Label>
-    <Label Text="{Binding Mensaje.Contenido}" FontSize="30"></Label>
-    <Label Text="" FontSize="20" ></Label>
-    <Label Text="De" FontSize="20"></Label>
-    <Label Text="{Binding Mensaje.Emisor.NombreCompleto}" FontSize="20"></Label>
-    <Label Text="Para" FontSize="20" ></Label>
-    <Label Text="{Binding Mensaje.Receptor.NombreCompleto}" FontSize="20"></Label>
-    <Label Text="" FontSize="20" ></Label>
+  
+  <ScrollView>
+    <StackLayout Padding="10">
+      <Label Text="{Binding Mensaje.Asunto}" FontSize="50"></Label>
+      <Label Text="{Binding Mensaje.Contenido}" FontSize="30"></Label>
+      <Label Text="" FontSize="20" ></Label>
+      <Label Text="De" FontSize="20"></Label>
+      <Label Text="{Binding Mensaje.Emisor.NombreCompleto}" FontSize="20"></Label>
+      <Label Text="Para" FontSize="20" ></Label>
+      <Label Text="{Binding Mensaje.Receptor.NombreCompleto}" FontSize="20"></Label>
+      <Label Text="" FontSize="20" ></Label>
 
-    <Label Text="{Binding Mensaje.Fecha}" FontSize="15" XAlign="End"></Label>
-  </StackLayout>
+      <Label Text="{Binding Mensaje.Fecha}" FontSize="15" XAlign="End"></Label>
+    </StackLayout>
+  </ScrollView>
+
 </ContentPage>

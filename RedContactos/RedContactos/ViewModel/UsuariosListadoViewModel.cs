@@ -39,7 +39,8 @@ namespace RedContactos.ViewModel
             set
             {
                 new Page().DisplayAlert("Agregar contacto...", value.NombreCompleto, "OK");
-                _usuarioSeleccionado = value;
+                _usuarioSeleccionado = null;
+                SetProperty(ref value, null);
             }
         }
 

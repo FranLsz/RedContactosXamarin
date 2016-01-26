@@ -37,6 +37,8 @@ namespace RedContactos.ViewModel
                         vm.Titulo = "Mensaje enviado nº " + value.Id;
                         vm.Mensaje = value;
                     });
+                    _mensajeSeleccionado = null;
+                    SetProperty(ref value, null);
                 }
 
             }

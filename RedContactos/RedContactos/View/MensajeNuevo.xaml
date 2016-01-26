@@ -7,7 +7,7 @@
     <Label Text="{Binding AsuntoLabel}"></Label>
     <Entry Text="{Binding Mensaje.Asunto}"></Entry>
     <Label Text="{Binding ContenidoLabel}"></Label>
-    <Entry Text="{Binding Mensaje.Contenido}"></Entry>
+    <Editor Text="{Binding Mensaje.Contenido}" VerticalOptions="FillAndExpand"></Editor>
     <Button Text="{Binding EnviarLabel}" Command="{Binding CmdEnviar}"></Button>
   </StackLayout>
 </ContentPage>
