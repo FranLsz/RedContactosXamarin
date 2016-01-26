@@ -88,7 +88,7 @@ namespace RedContactos.Service
 
         #region Mensaje
 
-        public async Task<List<MensajeModel>> GetMensajesRecibidos(int userId)
+        public async Task<ICollection<MensajeModel>> GetMensajesRecibidos(int userId)
         {
             var request = new RestRequest("Mensaje") { Method = Method.GET };
             request.AddQueryParameter("receptorId", userId);
@@ -101,7 +101,7 @@ namespace RedContactos.Service
             return null;
         }
 
-        public async Task<List<MensajeModel>> GetMensajesEnviados(int userId)
+        public async Task<ICollection<MensajeModel>> GetMensajesEnviados(int userId)
         {
             var request = new RestRequest("Mensaje") { Method = Method.GET };
             request.AddQueryParameter("emisorId", userId);
@@ -149,7 +149,7 @@ namespace RedContactos.Service
 
         public async Task DeleteMensaje(int id)
         {
-            var request = new RestRequest("Mensaje") { Method = Method.POST };
+            var request = new RestRequest("Mensaje") { Method = Method.DELETE };
             request.AddQueryParameter("id", id);
 
             await _client.Execute(request);
@@ -160,19 +160,36 @@ namespace RedContactos.Service
 
         #region Contacto
 
-        public Task<List<MensajeModel>> GetContactos(int userId)
+        public async Task<ICollection<UsuarioModel>> GetContactos(int userId)
         {
-            throw new NotImplementedException();
+            var request = new RestRequest("Contacto") { Method = Method.GET };
+            request.AddQueryParameter("id", userId);
+
+            var response = await _client.Execute<List<UsuarioModel>>(request);
+            if (response.IsSuccess)
+                return response.Data;
+
+            return null;
         }
 
-        public Task<MensajeModel> AddContacto(ContactoModel model)
+        public async Task<ContactoModel> AddContacto(ContactoModel model)
         {
-            throw new NotImplementedException();
+            var request = new RestRequest("Contacto", Method.POST);
+            request.AddJsonBody(model);
+            var response = await _client.Execute<ContactoModel>(request);
+
+            if (response.IsSuccess)
+                return response.Data;
+            return null;
         }
 
-        public Task DeleteContacto(int userId, int amigoId)
+        public async Task DeleteContacto(int userId, int amigoId)
         {
-            throw new NotImplementedException();
+            var request = new RestRequest("Contacto") { Method = Method.DELETE };
+            request.AddQueryParameter("idUsuario", userId);
+            request.AddQueryParameter("idAmigo", amigoId);
+
+            await _client.Execute(request);
         }
 
         #endregion

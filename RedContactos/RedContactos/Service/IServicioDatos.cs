@@ -19,8 +19,8 @@ namespace RedContactos.Service
 
         #region Mensaje
 
-        Task<List<MensajeModel>> GetMensajesRecibidos(int userId);
-        Task<List<MensajeModel>> GetMensajesEnviados(int userId);
+        Task<ICollection<MensajeModel>> GetMensajesRecibidos(int userId);
+        Task<ICollection<MensajeModel>> GetMensajesEnviados(int userId);
         Task<MensajeModel> GetMensaje(int id);
         Task<MensajeModel> AddMensaje(MensajeModel model);
         Task UpdateMensaje(MensajeModel model);
@@ -30,11 +30,10 @@ namespace RedContactos.Service
 
         #region Contacto
 
-        Task<List<MensajeModel>> GetContactos(int userId);
-        Task<MensajeModel> AddContacto(ContactoModel model);
+        Task<ICollection<UsuarioModel>> GetContactos(int userId);
+        Task<ContactoModel> AddContacto(ContactoModel model);
         Task DeleteContacto(int userId, int amigoId);
 
         #endregion
-
     }
 }

@@ -6,5 +6,6 @@
     <Label Text="{Binding Usuario.Username}" FontSize="50"></Label>
     <Label Text="{Binding Usuario.NombreCompleto}" FontSize="40"></Label>
     <Button Text="{Binding EnviarMensajeLabel}" Command="{Binding CmdEnviarMensaje}"></Button>
+    <Button Text="{Binding BorrarContactoLabel}" Command="{Binding CmdBorrarContacto}"></Button>
   </StackLayout>
 </ContentPage>

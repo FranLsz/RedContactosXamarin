@@ -1,5 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
+using Autofac.Features.ResolveAnything;
 using DataModel.ViewModel;
 using MvvmLibrary.Factorias;
 using RedContactos.Service;
@@ -24,7 +27,6 @@ namespace RedContactos.ViewModel
             set
             {
                 SetProperty(ref _listadoUsuarios, value);
-
             }
         }
 
@@ -38,15 +40,31 @@ namespace RedContactos.ViewModel
 
             set
             {
-                new Page().DisplayAlert("Agregar contacto...", value.NombreCompleto, "OK");
+                
+                AgregarContacto(value);
                 _usuarioSeleccionado = null;
                 SetProperty(ref value, null);
+
             }
         }
 
         public UsuariosListadoViewModel(INavigator navigator, IServicioDatos servicio, Session session) : base(navigator, servicio, session)
         {
             //UsuarioSeleccionado = new UsuarioModel();
+        }
+
+        public async void AgregarContacto(UsuarioModel model)
+        {
+            var cm = new ContactoModel
+            {
+                IdUsuario = Session.User.Id,
+                IdAmigo = model.Id,
+                Fecha = DateTime.Now
+            };
+
+            await _servicio.AddContacto(cm);
+            await new Page().DisplayAlert(model.NombreCompleto, "Contacto agregado", "OK");
+
         }
     }
 }

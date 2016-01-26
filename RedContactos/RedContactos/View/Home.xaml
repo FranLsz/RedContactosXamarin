@@ -9,13 +9,15 @@
 
     <StackLayout Padding="20">
       <Label Text="{Binding MisContactosLabel}" XAlign="Center"></Label>
-      <ListView ItemsSource="{Binding ListadoContactos, Mode=TwoWay}" SelectedItem="{Binding ContactoSeleccionado, Mode=TwoWay}">
-        <ListView.ItemTemplate >
-          <DataTemplate  >
-            <TextCell  Text="{Binding Username} " Detail="{Binding NombreCompleto}" />
-          </DataTemplate>
-        </ListView.ItemTemplate>
-      </ListView>
+      <ScrollView>
+        <ListView ItemsSource="{Binding ListadoContactos, Mode=TwoWay}" SelectedItem="{Binding ContactoSeleccionado, Mode=TwoWay}">
+          <ListView.ItemTemplate >
+            <DataTemplate  >
+              <TextCell  Text="{Binding Username} " Detail="{Binding NombreCompleto}" />
+            </DataTemplate>
+          </ListView.ItemTemplate>
+        </ListView>
+      </ScrollView>
     </StackLayout>
   </StackLayout>
 </ContentPage>

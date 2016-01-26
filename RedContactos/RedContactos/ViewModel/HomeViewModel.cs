@@ -59,9 +59,15 @@ namespace RedContactos.ViewModel
         private async void NuevoContacto()
         {
             var list = await _servicio.GetUsuarios();
-            list.Remove(list.FirstOrDefault(o => o.Id == Session.User.Id));
+            var contactos = await _servicio.GetContactos(Session.User.Id);
+            var finalList = new List<UsuarioModel>(list);
 
-            await _navigator.PushAsync<UsuariosListadoViewModel>(o => o.ListadoUsuarios = new ObservableCollection<UsuarioModel>(list));
+            foreach (var l in from l in list from c in contactos.Where(c => c.Id == l.Id || l.Id == Session.User.Id) select l)
+            {
+                finalList.Remove(l);
+            }
+
+            await _navigator.PushAsync<UsuariosListadoViewModel>(o => o.ListadoUsuarios = new ObservableCollection<UsuarioModel>(finalList));
         }
 
         private async void MisMensajes()

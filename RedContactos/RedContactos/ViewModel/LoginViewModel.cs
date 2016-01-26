@@ -60,8 +60,7 @@ namespace RedContactos.ViewModel
                 if (us != null)
                 {
                     Session.User = us;
-                    var list = await _servicio.GetUsuarios();
-                    list.Remove(list.FirstOrDefault(o => o.Id == Session.User.Id));
+                    var list = await _servicio.GetContactos(Session.User.Id);
                     await _navigator.PushAsync<HomeViewModel>(o =>
                     {
                         o.Titulo = "Bienvenido " + Session.User.Username;
