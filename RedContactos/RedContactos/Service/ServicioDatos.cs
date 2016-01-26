@@ -157,5 +157,25 @@ namespace RedContactos.Service
 
         #endregion
 
+
+        #region Contacto
+
+        public Task<List<MensajeModel>> GetContactos(int userId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<MensajeModel> AddContacto(ContactoModel model)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task DeleteContacto(int userId, int amigoId)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
+
     }
 }

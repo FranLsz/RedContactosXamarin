@@ -28,5 +28,13 @@ namespace RedContactos.Service
 
         #endregion
 
+        #region Contacto
+
+        Task<List<MensajeModel>> GetContactos(int userId);
+        Task<MensajeModel> AddContacto(ContactoModel model);
+        Task DeleteContacto(int userId, int amigoId);
+
+        #endregion
+
     }
 }
