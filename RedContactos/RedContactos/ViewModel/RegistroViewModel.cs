@@ -32,7 +32,7 @@ namespace RedContactos.ViewModel
         public Page Page;
 
         // CTOR
-        public RegistroViewModel(INavigator navigator, IServicioDatos servicio, Session session) : base(navigator, servicio, session)
+        public RegistroViewModel(INavigator navigator, IServicioDatos servicio, Session session, IPage page) : base(navigator, servicio, session, page)
         {
             Page = new Page();
             Usuario = new UsuarioModel();

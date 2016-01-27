@@ -48,7 +48,7 @@ namespace RedContactos.ViewModel
 
         public UsuarioModel _contactoSeleccionado;
 
-        public HomeViewModel(INavigator navigator, IServicioDatos servicio, Session session) : base(navigator, servicio, session)
+        public HomeViewModel(INavigator navigator, IServicioDatos servicio, Session session, IPage page) : base(navigator, servicio, session, page)
         {
             cmdNuevoContacto = new Command(NuevoContacto);
             cmdMisMensajes = new Command(MisMensajes);

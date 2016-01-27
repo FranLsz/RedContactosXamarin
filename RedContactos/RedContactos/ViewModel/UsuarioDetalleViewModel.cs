@@ -17,7 +17,7 @@ namespace RedContactos.ViewModel
 
         public UsuarioModel Usuario { get; set; }
 
-        public UsuarioDetalleViewModel(INavigator navigator, IServicioDatos servicio, Session session) : base(navigator, servicio, session)
+        public UsuarioDetalleViewModel(INavigator navigator, IServicioDatos servicio, Session session, IPage page) : base(navigator, servicio, session, page)
         {
             CmdEnviarMensaje = new Command(EnviarMensaje);
             CmdBorrarContacto = new Command(BorrarContacto);

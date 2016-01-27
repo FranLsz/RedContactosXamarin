@@ -25,7 +25,7 @@ namespace RedContactos.ViewModel
             set { SetProperty(ref _mensaje, value); }
         }
 
-        public MensajeNuevoViewModel(INavigator navigator, IServicioDatos servicio, Session session) : base(navigator, servicio, session)
+        public MensajeNuevoViewModel(INavigator navigator, IServicioDatos servicio, Session session, IPage page) : base(navigator, servicio, session, page)
         {
             _mensaje = new MensajeModel();
             CmdEnviar = new Command(Enviar);

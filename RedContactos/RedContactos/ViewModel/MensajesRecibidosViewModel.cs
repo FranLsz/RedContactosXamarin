@@ -40,7 +40,7 @@ namespace RedContactos.ViewModel
             }
         }
 
-        public MensajesRecibidosViewModel(INavigator navigator, IServicioDatos servicio, Session session) : base(navigator, servicio, session)
+        public MensajesRecibidosViewModel(INavigator navigator, IServicioDatos servicio, Session session, IPage page) : base(navigator, servicio, session, page)
         {
             CmdMensajesEnviados = new Command(MensajesEnviados);
         }

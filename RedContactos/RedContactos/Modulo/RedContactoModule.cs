@@ -1,5 +1,6 @@
 ﻿using System;
 using Autofac;
+using MvvmLibrary.Factorias;
 using RedContactos.Service;
 using RedContactos.Util;
 using RedContactos.View;
@@ -58,6 +59,12 @@ namespace RedContactos.Modulo
                 var navigation = page as IPageContainer<Page>;
                 return navigation != null ? navigation.CurrentPage : page;
             });
+            builder.RegisterType<DialogService>().
+                 As<IDialogService>().
+                 SingleInstance();
+            builder.RegisterType<PageProxy>().
+                 As<IPage>().
+                 SingleInstance();
         }
     }
 }

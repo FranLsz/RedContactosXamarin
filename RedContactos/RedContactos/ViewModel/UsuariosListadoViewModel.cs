@@ -48,7 +48,7 @@ namespace RedContactos.ViewModel
             }
         }
 
-        public UsuariosListadoViewModel(INavigator navigator, IServicioDatos servicio, Session session) : base(navigator, servicio, session)
+        public UsuariosListadoViewModel(INavigator navigator, IServicioDatos servicio, Session session, IPage page) : base(navigator, servicio, session, page)
         {
             //UsuarioSeleccionado = new UsuarioModel();
         }

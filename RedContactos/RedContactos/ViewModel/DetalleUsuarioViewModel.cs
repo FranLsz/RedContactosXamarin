@@ -13,7 +13,7 @@ namespace RedContactos.ViewModel
         public ICommand CmdAgregar;
 
 
-        public DetalleUsuarioViewModel(INavigator navigator, IServicioDatos servicio, Session session) : base(navigator, servicio, session)
+        public DetalleUsuarioViewModel(INavigator navigator, IServicioDatos servicio, Session session, IPage page) : base(navigator, servicio, session, page)
         {
             _usuario = new UsuarioModel();
             CmdAgregar = new Command(AgregarContacto);

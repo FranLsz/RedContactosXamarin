@@ -7,7 +7,7 @@
     <Label Text="{Binding MensajesRecibidosLabel}" XAlign="Center"></Label>
     <ListView ItemsSource="{Binding Mensajes, Mode=TwoWay}" SelectedItem="{Binding MensajeSeleccionado, Mode=TwoWay}">
       <ListView.ItemTemplate >
-        <DataTemplate  >
+        <DataTemplate>
           <TextCell  Text="{Binding Asunto}" Detail="{Binding Fecha}" />
         </DataTemplate>
       </ListView.ItemTemplate>

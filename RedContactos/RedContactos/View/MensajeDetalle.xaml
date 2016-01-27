@@ -16,6 +16,7 @@
       <Label Text="" FontSize="20" ></Label>
 
       <Label Text="{Binding Mensaje.Fecha}" FontSize="15" XAlign="End"></Label>
+      <Button Text="{Binding BorrarMensajeLabel}" Command="{Binding CmdBorrarMensaje}"></Button>
     </StackLayout>
   </ScrollView>
 

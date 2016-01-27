@@ -43,7 +43,7 @@ namespace RedContactos.ViewModel
 
             }
         }
-        public MensajesEnviadosViewModel(INavigator navigator, IServicioDatos servicio, Session session) : base(navigator, servicio, session)
+        public MensajesEnviadosViewModel(INavigator navigator, IServicioDatos servicio, Session session, IPage page) : base(navigator, servicio, session, page)
         {
         }
     }
