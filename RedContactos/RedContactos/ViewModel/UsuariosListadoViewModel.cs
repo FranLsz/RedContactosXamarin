@@ -20,15 +20,8 @@ namespace RedContactos.ViewModel
         private ObservableCollection<UsuarioModel> _listadoUsuarios;
         public ObservableCollection<UsuarioModel> ListadoUsuarios
         {
-            get
-            {
-                return _listadoUsuarios;
-            }
-
-            set
-            {
-                SetProperty(ref _listadoUsuarios, value);
-            }
+            get { return _listadoUsuarios; }
+            set { SetProperty(ref _listadoUsuarios, value); }
         }
 
         private UsuarioModel _usuarioSeleccionado;
@@ -56,7 +49,7 @@ namespace RedContactos.ViewModel
 
         private void AddContacto(object obj)
         {
-           //var id = i
+            var id = 1;
         }
 
         public async void AgregarContacto(UsuarioModel model)

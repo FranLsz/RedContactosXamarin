@@ -18,26 +18,26 @@ namespace RedContactos.Modulo
             builder.RegisterType<Session>().SingleInstance();
 
             // PAGES
-            builder.RegisterType<Login>();
-            builder.RegisterType<Registro>();
-            builder.RegisterType<Home>();
-            builder.RegisterType<ListadoUsuarios>();
-            builder.RegisterType<MensajesRecibidos>();
-            builder.RegisterType<MensajeDetalle>();
-            builder.RegisterType<UsuarioDetalle>();
-            builder.RegisterType<MensajeNuevo>();
-            builder.RegisterType<MensajesEnviados>();
+            builder.RegisterType<Login>().SingleInstance();
+            builder.RegisterType<Registro>().SingleInstance();
+            builder.RegisterType<Home>().SingleInstance();
+            builder.RegisterType<ListadoUsuarios>().SingleInstance();
+            builder.RegisterType<MensajesRecibidos>().SingleInstance();
+            builder.RegisterType<MensajeDetalle>().SingleInstance();
+            builder.RegisterType<UsuarioDetalle>().SingleInstance();
+            builder.RegisterType<MensajeNuevo>().SingleInstance();
+            builder.RegisterType<MensajesEnviados>().SingleInstance();
 
             // VIEWMODELS
-            builder.RegisterType<LoginViewModel>();
-            builder.RegisterType<RegistroViewModel>();
-            builder.RegisterType<HomeViewModel>();
-            builder.RegisterType<UsuariosListadoViewModel>();
-            builder.RegisterType<UsuarioDetalleViewModel>();
-            builder.RegisterType<MensajesRecibidosViewModel>();
-            builder.RegisterType<MensajeDetalleViewModel>();
-            builder.RegisterType<MensajeNuevoViewModel>();
-            builder.RegisterType<MensajesEnviadosViewModel>();
+            builder.RegisterType<LoginViewModel>().SingleInstance();
+            builder.RegisterType<RegistroViewModel>().SingleInstance();
+            builder.RegisterType<HomeViewModel>().SingleInstance();
+            builder.RegisterType<UsuariosListadoViewModel>().SingleInstance();
+            builder.RegisterType<UsuarioDetalleViewModel>().SingleInstance();
+            builder.RegisterType<MensajesRecibidosViewModel>().SingleInstance();
+            builder.RegisterType<MensajeDetalleViewModel>().SingleInstance();
+            builder.RegisterType<MensajeNuevoViewModel>().SingleInstance();
+            builder.RegisterType<MensajesEnviadosViewModel>().SingleInstance();
 
 
             // action es un delegado, es un objeto que se le pasa para operar sobre otro objeto

@@ -6,15 +6,20 @@
     <Label Text="{Binding ListadoUsuariosLabel}" XAlign="Center"></Label>
     <ListView ItemsSource="{Binding ListadoUsuarios, Mode=TwoWay}" SelectedItem="{Binding UsuarioSeleccionado, Mode=TwoWay}">
       <ListView.ItemTemplate >
-        <DataTemplate  >
-          <!--<ViewCell>
+        <DataTemplate>
+          <ViewCell>
             <ViewCell.ContextActions>
-              <MenuItem Text="Añadir" Command="{Binding CmdAdd}"
-                        CommandParameter="{Binding idDestino}"></MenuItem>
+              <MenuItem Text="Añadir"
+                        Command="{Binding CmdAdd}"
+                        CommandParameter="{Binding Id}"/>
             </ViewCell.ContextActions>
-          </ViewCell>-->
-
-          <TextCell  Text="{Binding Username} " Detail="{Binding NombreCompleto}" />
+            <StackLayout>
+              <Label Text="{Binding Username}"></Label>
+              <Label Text="{Binding NombreCompleto}"></Label>
+            </StackLayout>
+          </ViewCell>
+          
+          <!--<TextCell  Text="{Binding Username} " Detail="{Binding NombreCompleto}" />-->
         </DataTemplate>
       </ListView.ItemTemplate>
     </ListView>
