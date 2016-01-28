@@ -8,7 +8,17 @@
     <ListView ItemsSource="{Binding Mensajes, Mode=TwoWay}" SelectedItem="{Binding MensajeSeleccionado, Mode=TwoWay}">
       <ListView.ItemTemplate >
         <DataTemplate>
+          <!--
           <TextCell  Text="{Binding Asunto}" Detail="{Binding Fecha}" />
+          -->
+
+          <ViewCell>
+            <Label Text="{Binding Asunto}"></Label>
+            <StackLayout Orientation="Horizontal">
+              <Label Text="{Binding idOrigen, StringFormat='Enviado por {0}'}"></Label>
+              
+            </StackLayout>
+          </ViewCell>
         </DataTemplate>
       </ListView.ItemTemplate>
     </ListView>

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using Autofac.Features.ResolveAnything;
 using DataModel.ViewModel;
 using MvvmLibrary.Factorias;
@@ -13,7 +14,7 @@ namespace RedContactos.ViewModel
 {
     public class UsuariosListadoViewModel : GeneralViewModel
     {
-
+        public ICommand CmdAdd { get; set; }
         public string ListadoUsuariosLabel { get { return "Usuarios disponibles"; } }
 
         private ObservableCollection<UsuarioModel> _listadoUsuarios;
@@ -40,7 +41,7 @@ namespace RedContactos.ViewModel
 
             set
             {
-                
+
                 AgregarContacto(value);
                 _usuarioSeleccionado = null;
                 SetProperty(ref value, null);
@@ -50,7 +51,12 @@ namespace RedContactos.ViewModel
 
         public UsuariosListadoViewModel(INavigator navigator, IServicioDatos servicio, Session session, IPage page) : base(navigator, servicio, session, page)
         {
-            //UsuarioSeleccionado = new UsuarioModel();
+            CmdAdd = new Command(AddContacto);
+        }
+
+        private void AddContacto(object obj)
+        {
+           //var id = i
         }
 
         public async void AgregarContacto(UsuarioModel model)
