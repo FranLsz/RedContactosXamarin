@@ -36,6 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
+    <Compile Include="Models\ListadoUsuariosModel.cs" />
     <Compile Include="Modulo\RedContactoModule.cs" />
     <Compile Include="Modulo\Startup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

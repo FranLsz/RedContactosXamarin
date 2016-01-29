@@ -3,15 +3,26 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="RedContactos.View.Login"
              Title ="{Binding Titulo}">
-  <StackLayout Padding="35">
+  <RelativeLayout>
 
-    <Entry Text="{Binding Usuario.Username}" Placeholder="{Binding TituloUsername}"></Entry>
-    <Entry Text="{Binding Usuario.Password}" Placeholder="{Binding TituloPassword}" IsPassword="True"></Entry>
+    <StackLayout Padding="35" Opacity="{Binding Opacity, Mode=TwoWay}" IsEnabled="{Binding Enabled, Mode=TwoWay}">
+      <Entry Text="{Binding Usuario.Username}" Placeholder="{Binding TituloUsername}"/>
+      <Entry Text="{Binding Usuario.Password}" Placeholder="{Binding TituloPassword}" IsPassword="True"/>
+      <StackLayout Orientation="Vertical">
+        <Button Text="{Binding IniciarLabel}" Command="{Binding cmdLogin}"/>
+        <Button Text="{Binding RegistroLabel}" Command="{Binding cmdRegistro}"/>
+      </StackLayout>
 
-    <StackLayout Orientation="Vertical">
-      <Button Text="{Binding IniciarLabel}" Command="{Binding cmdLogin}"></Button>
-      <Button Text="{Binding RegistroLabel}" Command="{Binding cmdRegistro}"></Button>
     </StackLayout>
+    <ActivityIndicator
+      IsVisible="{Binding IsBusy, Mode=TwoWay}"
+      IsRunning="{Binding IsBusy, Mode=TwoWay}"
+      VerticalOptions="CenterAndExpand"
+      RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.30}"
+      RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.45}">
 
-  </StackLayout>
+    </ActivityIndicator>
+
+  </RelativeLayout>
+
 </ContentPage>

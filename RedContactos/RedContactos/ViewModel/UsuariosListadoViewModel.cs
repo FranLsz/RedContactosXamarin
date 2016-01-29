@@ -6,6 +6,7 @@ using System.Windows.Input;
 using Autofac.Features.ResolveAnything;
 using DataModel.ViewModel;
 using MvvmLibrary.Factorias;
+using RedContactos.Models;
 using RedContactos.Service;
 using RedContactos.Util;
 using Xamarin.Forms;
